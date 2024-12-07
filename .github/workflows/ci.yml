@@ -12,7 +12,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # Job 1: Test con Pytest y Lint con Ruff
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install pytest ruff
+      - name: Run Pytest
+        run: pytest
+      - name: Run Ruff Lint
+        run: ruff .
+
+    # Job 2: Test con Pytest y Lint con Ruff
       - name: Checkout code
         uses: actions/checkout@v3
 
